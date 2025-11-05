@@ -1,18 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import Conteiner from '../components/Container';
 import Field from '../components/Field';
 import Button from '../components/Button';
 import Heading1 from '../components/Heading1';
 import Paragraph from '../components/Parapraph';
 
-const LoginDiv = styled.div`
-    background-color: #09f;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-`;
 const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -29,7 +23,7 @@ const Form = styled.form`
 
 export default function Login() {
     return(
-        <LoginDiv>
+        <Conteiner>
             <Form action="">
                 <div>
                     <Heading1>Login</Heading1>
@@ -43,6 +37,6 @@ export default function Login() {
                 <Button submit>Entrar</Button>
                 <Paragraph>Não tem uma conta? Registre-se</Paragraph>
             </Form>
-        </LoginDiv>
+        </Conteiner>
     );
 }

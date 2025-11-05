@@ -1,18 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import Container from '../components/Container';
 import Field from '../components/Field';
 import Button from '../components/Button';
 import Heading1 from '../components/Heading1';
 import Paragraph from '../components/Parapraph';
 
-const LoginRegister = styled.div`
-    background-color: #09f;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-`;
 const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -28,7 +22,7 @@ const Form = styled.form`
 
 export default function Login() {
     return(
-        <LoginRegister>
+        <Container>
             <Form action="">
                 <div>
                     <Heading1>Registre-se</Heading1>
@@ -42,7 +36,7 @@ export default function Login() {
                 <Button submit>Registrar</Button>
                 <Paragraph>Já possui uma conta? Faça login</Paragraph>
             </Form>
-        </LoginRegister>
+        </Container>
     );
 }
 

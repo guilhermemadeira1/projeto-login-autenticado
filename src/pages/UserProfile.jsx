@@ -1,7 +1,9 @@
 import React from 'react'
 
+import Container from '../components/Container';
+
 export default function UserProfile(){
     return (
-        <div>UserProfile</div>
+        <Container>UserProfile</Container>
     );
 }
