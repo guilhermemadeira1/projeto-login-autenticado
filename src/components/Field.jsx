@@ -27,7 +27,12 @@ export default function Field({label, type}){
             <Label htmlFor={`i-${label.toLowerCase()}`}>
                 {`${label}: `}
             </Label>
-            <Input type={type} id={`i-${label.toLowerCase()}`} name={label.toLowerCase()}/>
+            <Input 
+                type={type} 
+                id={`i-${label.toLowerCase()}`}
+                name={label.toLowerCase()}
+                required
+            />
         </Div>
     );
 }
