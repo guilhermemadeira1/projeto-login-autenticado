@@ -14,7 +14,7 @@ const Container = styled.div`
     width: ${({width}) => width || 'min-content'};
     height: ${({height}) => height || 'min-content'};
 
-    max-width: ${({maxWidth}) => maxWidth || 'auto'};
+    max-width: ${({maxWidth}) => maxWidth || 'none'};
 `;
 
 export default Container;

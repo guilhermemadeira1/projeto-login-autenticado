@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Conteiner from '../components/Container';
+import Background from '../components/Background';
 import Field from '../components/Field';
 import Button from '../components/Button';
 import Heading1 from '../components/Heading1';
-import Paragraph from '../components/Parapraph';
+import Paragraph from '../components/Paragraph';
 
 const Form = styled.form`
     display: flex;
@@ -23,7 +23,7 @@ const Form = styled.form`
 
 export default function Login() {
     return(
-        <Conteiner>
+        <Background>
             <Form action="">
                 <div>
                     <Heading1>Login</Heading1>
@@ -37,6 +37,6 @@ export default function Login() {
                 <Button submit>Entrar</Button>
                 <Paragraph>Não tem uma conta? Registre-se</Paragraph>
             </Form>
-        </Conteiner>
+        </Background>
     );
 }

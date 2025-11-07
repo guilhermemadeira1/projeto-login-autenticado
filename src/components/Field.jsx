@@ -7,14 +7,12 @@ const Div = styled.div`
     margin-bottom: 20px;
     width: 100%;
 `;
-
 const Input = styled.input`
     padding: 8px;
     width: 100%;
     border: solid 1px #09f;
     border-radius: 3px;
 `;
-
 const Label = styled.label`
     margin-right: 5px;
     margin-bottom: 5px;
