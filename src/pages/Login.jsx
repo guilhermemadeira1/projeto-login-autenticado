@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Background from '../components/Background';
 import Field from '../components/Field';
 import Button from '../components/Button';
-import Heading1 from '../components/Heading1';
+import Heading from '../components/Heading';
 import Paragraph from '../components/Paragraph';
 
 const Form = styled.form`
@@ -26,11 +26,10 @@ export default function Login() {
         <Background>
             <Form action="">
                 <div>
-                    <Heading1>Login</Heading1>
+                    <Heading level='1'>Login</Heading>
                     <Paragraph>Faça login para acessar o perfil</Paragraph>
                 </div>
                 <div style={{width: '100%'}}>
-                    <Field type="text" label="Nome"/>
                     <Field type="email" label="Email"/>
                     <Field type="password" label="Senha"/>
                 </div>
