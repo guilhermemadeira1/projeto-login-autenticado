@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Background from '../components/Background';
 import Field from '../components/Field';
 import Button from '../components/Button';
-import Heading1 from '../components/Heading1';
+import Heading from '../components/Heading';
 import Paragraph from '../components/Paragraph';
 
 const Form = styled.form`
@@ -25,7 +25,7 @@ export default function Login() {
         <Background>
             <Form action="">
                 <div>
-                    <Heading1>Registre-se</Heading1>
+                    <Heading level='1'>Registre-se</Heading>
                     <Paragraph>Crie sua conta gratuita hoje</Paragraph>
                 </div>
                 <div style={{width: '100%'}}>
