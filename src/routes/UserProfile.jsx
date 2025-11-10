@@ -8,7 +8,7 @@ import ProfileBody from '../components/ProfileBody';
 export default function UserProfile(){
     return (
         <Background>
-            <Container width="60%" height="500px" maxWidth="400px">
+            <Container $width="70%" $height="500px" $maxWidth="400px">
                 <ProfileHeader/>
                 <ProfileBody/>
             </Container>

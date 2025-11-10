@@ -1,13 +1,20 @@
 import React from 'react';
-import Login from './pages/Login';
-import Register from './pages/Register';
 import './App.css';
-import UserProfile from './pages/UserProfile';
+import Login from './routes/Login';
+import Register from './routes/Register';
+import UserProfile from './routes/UserProfile';
+import ErrorRoute from './routes/ErrorRoute';
+import {Routes, Route, Navigate} from 'react-router-dom';
 
 export default function App(){
+  const authenticaded = true;
   return(
-    <>
-    <Login/>
-    </>
+    <Routes>
+        <Route path="/" element={authenticaded? <UserProfile/> : <Navigate to="/login"/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/registro" element={<Register/>}/>
+        <Route path="/perfil" element={authenticaded? <UserProfile/> : <Navigate to="/login"/>}/>
+        <Route path="*" element={<ErrorRoute/>}/>
+    </Routes>
   );
 }

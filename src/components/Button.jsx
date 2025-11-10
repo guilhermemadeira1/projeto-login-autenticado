@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const style = `
+const Input = styled.input`
     padding: 10px;
     width: 100%;
     border-style: none;
@@ -16,12 +16,7 @@ const style = `
     }
 `;
 
-const StyledButton = styled.button `${style}`;
-const StyledInput = styled.input `${style}`;
-
 export default function Button({onClick, children, submit}){
-    if(submit){
-        return <StyledInput type="submit" value={children} onClick={(e)=> e.preventDefault()}/>
-    }
-   return <StyledButton onClick={onClick}>{children}</StyledButton>;
+    return <Input type={submit? "submit" : 'button'} value={children} onClick={onClick}/>
+    
 }
