@@ -1,4 +1,6 @@
 import React, {useRef, useState} from 'react';
+import useAuth from '../hooks/useAuth';
+
 import styled from 'styled-components';
 
 import Background from '../components/Background';
@@ -33,33 +35,39 @@ export default function Register() {
         const name = inputNameRef.current.value;
         const email = inputEmailRef.current.value;
         const password = inputPasswordRef.current.value;
-
         let users = JSON.parse(localStorage.getItem("registeredUers")) || [];
-        const userDoesExist = users.some(u => 
-            u.name === name && 
-            u.email === email && 
-            u.password === password
-        );
-        const emailBeingUsed = users.some(u =>
-            u.email === email
-        );
-        if(!userDoesExist){
+
+        if(name && email && password){ 
+            const userDoesExist = users.some(u => 
+                u.name === name && 
+                u.email === email && 
+                u.password === password
+            );
+            const emailBeingUsed = users.some(u =>
+                u.email === email
+            );
             if(!emailBeingUsed){
-                if(users.length > 0){
-                    users = [...users, {name, email, password}];
+                if(!userDoesExist){
+                    if(users.length > 0){
+                        users = [...users, {name, email, password}];
+                    }
+                    else{
+                        users = [{name, email, password}];
+                    }
+                    localStorage.setItem("registeredUsers", JSON.stringify(users));
+                    setRegStatus({success: true, message: "Usuário cadastrado com sucesso!"})
                 }
                 else{
-                    users = [{name, email, password}];
+                    setRegStatus({success: false, message: "Este usuário já está cadastrado"});
                 }
-                localStorage.setItem("registeredUsers", JSON.stringify(users));
-                setRegStatus({success: true, message: "Usuário cadastrado com sucesso!"})
             }
             else{
-                setRegStatus({success: false, message: "Já existe um usuário com este email"});
+                setRegStatus({sucess: false, message: "Este email já está sendo usado"});
             }
-        }
+         
+        }        
         else{
-            setRegStatus({sucess: false, message: "Usuário já cadastrado"});
+            setRegStatus({success: false, message: "Dados estão faltando"})
         }
         showMessage.current = true;
     }
