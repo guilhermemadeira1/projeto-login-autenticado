@@ -34,7 +34,7 @@ export default function Login() {
         evt.preventDefault(); // impede o comportamento padrão do submit de atualizar a página
         const email = inputEmailRef.current.value;
         const password = inputPasswordRef.current.value;
-        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const users = JSON.parse(localStorage.getItem("registeredUsers")) || [];
        
         if(users.length > 0){
             if(email && password){
@@ -43,12 +43,11 @@ export default function Login() {
                     password === u.password
                 );
                 if(user){
-                    setLoginStatus({success: true, message:''});
-                    navigate('/perfil', {state: user});
+                    setLoginStatus({success: true, message:'Usuário autenticado com sucesso!'});
+                    navigate("/perfil");
                 }
                 else{
                     setLoginStatus({success: false, message: 'Senha ou e-mail incorretos'});
-                    showMessage.current = true;
                 }   
             }
             else{
@@ -74,7 +73,7 @@ export default function Login() {
                     <Field type="password" label="Senha" inputRef={inputPasswordRef}/>
                 </div>
                 <Button submit onClick={(e) => handleLogin(e)}>Entrar</Button>
-                <Paragraph $color='#f03' $size="1em">
+                <Paragraph $color={loginStatus.success? '#083': '#f03'} $size="1em">
                     {showMessage.current? loginStatus.message : ''}
                 </Paragraph>
                 <Paragraph>
