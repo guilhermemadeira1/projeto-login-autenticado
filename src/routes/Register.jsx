@@ -1,6 +1,4 @@
-import React, {useRef, useState} from 'react';
-import useAuth from '../hooks/useAuth';
-
+import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
 import Background from '../components/Background';
@@ -35,7 +33,7 @@ export default function Register() {
         const name = inputNameRef.current.value;
         const email = inputEmailRef.current.value;
         const password = inputPasswordRef.current.value;
-        let users = JSON.parse(localStorage.getItem("registeredUers")) || [];
+        let users = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 
         if(name && email && password){ 
             const userDoesExist = users.some(u => 
@@ -48,21 +46,18 @@ export default function Register() {
             );
             if(!emailBeingUsed){
                 if(!userDoesExist){
-                    if(users.length > 0){
-                        users = [...users, {name, email, password}];
-                    }
-                    else{
-                        users = [{name, email, password}];
-                    }
+                    const nextId =  users.length > 0? Math.max(...users.map(u => u.id)) + 1 : 0; // mapeia os ids e faz um spread para separar o array em valores individuais para o Math.max comparar
+                    users = [...users, {id: nextId, name, email, password}];
                     localStorage.setItem("registeredUsers", JSON.stringify(users));
-                    setRegStatus({success: true, message: "Usuário cadastrado com sucesso!"})
+                    setRegStatus({success: true, message: "Usuário cadastrado com sucesso!"});
+                   
                 }
                 else{
                     setRegStatus({success: false, message: "Este usuário já está cadastrado"});
                 }
             }
             else{
-                setRegStatus({sucess: false, message: "Este email já está sendo usado"});
+                setRegStatus({success: false, message: "Este email já está sendo usado"});
             }
          
         }        
