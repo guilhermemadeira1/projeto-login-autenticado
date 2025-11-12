@@ -34,7 +34,7 @@ export default function Register() {
         const email = inputEmailRef.current.value;
         const password = inputPasswordRef.current.value;
 
-        let users = JSON.parse(localStorage.getItem("users")) || [];
+        let users = JSON.parse(localStorage.getItem("registeredUers")) || [];
         const userDoesExist = users.some(u => 
             u.name === name && 
             u.email === email && 
@@ -51,7 +51,7 @@ export default function Register() {
                 else{
                     users = [{name, email, password}];
                 }
-                localStorage.setItem("users", JSON.stringify(users));
+                localStorage.setItem("registeredUsers", JSON.stringify(users));
                 setRegStatus({success: true, message: "Usuário cadastrado com sucesso!"})
             }
             else{
@@ -77,7 +77,7 @@ export default function Register() {
                     <Field type="password" label="Senha" inputRef={inputPasswordRef}/>
                 </div>
                 <Button submit onClick={(e) => handleRegister(e)}>Registrar</Button>
-                <Paragraph $color={regStatus.success? '#0a3' : '#f03'} $size="0.9em">
+                <Paragraph $color={regStatus.success? '#0a3' : '#f03'} $size="1em">
                     {showMessage.current? regStatus.message : ''}
                 </Paragraph>
                 <Paragraph>Já possui uma conta? 

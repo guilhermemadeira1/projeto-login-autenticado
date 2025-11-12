@@ -4,7 +4,9 @@ import Button from './Button';
 import Paragraph from './Paragraph';
 import Image from '../assets/default-profile-image.png';
 import Heading from './Heading';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import {useContext} from 'react';
+import { UserContext } from '../contexts/UserContext';
 
 const Header = styled.div`
     display: flex;
@@ -35,8 +37,7 @@ const Info = styled.div`
 
 export default function ProfileHeader(){
     const navigate = useNavigate();
-    const location = useLocation(); 
-    const user = location.state;
+    const {loggedInUser} = useContext(UserContext);
 
     const handleLogout = () => {
         navigate("/login");
@@ -50,8 +51,8 @@ export default function ProfileHeader(){
                 <ProfileImage src={Image}/>
             </ImageDiv>
             <Info>
-                <Paragraph $color='#fff' $size='1.2em'><strong> {user.name}</strong></Paragraph>
-                <Paragraph $color='#fff' $size='1.2em'> {user.email}</Paragraph>
+                <Paragraph $color='#fff' $size='1.2em'><strong> {loggedInUser.name}</strong></Paragraph>
+                <Paragraph $color='#fff' $size='1.2em'> {loggedInUser.email}</Paragraph>
                 <Button onClick={handleLogout}>Sair</Button>
             </Info>
         </Header>
