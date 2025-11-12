@@ -5,6 +5,6 @@ export default function useAuth(){ // hook personalizado para abstrair o uso do 
     const {loggedInUser, login, logout} = useContext(UserContext);
     const isAuthenticaded = !!loggedInUser; // converte o valor truthy ou falsy em boleano
 
-    return {user: loggedInUser, isAuthenticaded, login, logout};
+    return {loggedInUser, isAuthenticaded, login, logout};
 
 } 
