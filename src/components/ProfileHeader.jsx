@@ -4,9 +4,7 @@ import Button from './Button';
 import Paragraph from './Paragraph';
 import Image from '../assets/default-profile-image.png';
 import Heading from './Heading';
-import {useNavigate} from 'react-router-dom';
-import {useContext} from 'react';
-import { UserContext } from '../contexts/UserContext';
+import useAuth from '../hooks/useAuth';
 
 const Header = styled.div`
     display: flex;
@@ -36,11 +34,10 @@ const Info = styled.div`
 `;
 
 export default function ProfileHeader(){
-    const navigate = useNavigate();
-    const {loggedInUser} = useContext(UserContext);
+    const {loggedInUser, logout} = useAuth();
 
     const handleLogout = () => {
-        navigate("/login");
+        logout(loggedInUser);
     };
 
     return(

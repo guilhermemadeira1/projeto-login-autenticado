@@ -1,4 +1,4 @@
-import React, {createContext, useState, useMemo} from 'react';
+import React, {createContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const UserContext = createContext();
@@ -25,14 +25,14 @@ export function UserProvider ({children}){
             if(hasUser){
                 setLoggedInUser(user);
                 localStorage.setItem("loggedInUser", JSON.stringify(user));
-                navigate("/perfil");
+                navigate(`/usuario/${user.id}`);
             }
         }
     }
     const logout = () => {
         if(loggedInUser){
             setLoggedInUser(null);
-            localStorage.setItem("loggedInUser");
+            localStorage.removeItem("loggedInUser");
             navigate("/login");
         }
     }

@@ -1,6 +1,5 @@
 import {useRef, useState} from 'react';
 import styled from 'styled-components';
-import {useNavigate} from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 import Background from '../components/Background';
@@ -9,7 +8,6 @@ import Field from '../components/Field';
 import Button from '../components/Button';
 import Heading from '../components/Heading';
 import Paragraph from '../components/Paragraph';
-import { use } from 'react';
 
 const Form = styled.form`
     display: flex;
@@ -31,7 +29,6 @@ export default function Login() {
     const showMessage = useRef(false);
     const [loginStatus, setLoginStatus] = useState({success: false, message: ''});
     const {login} = useAuth();
-    const navigate = useNavigate();
 
     const handleLogin = (evt) =>{
         evt.preventDefault(); // impede o comportamento padrão do submit de atualizar a página
@@ -48,7 +45,6 @@ export default function Login() {
                 if(foundUser){
                     setLoginStatus({success: true, message:'Usuário autenticado com sucesso!'});
                     login(foundUser);
-                    navigate(`/perfil/${foundUser.id}`);
                 }
                 else{
                     setLoginStatus({success: false, message: 'Senha ou e-mail incorretos'});
