@@ -10,15 +10,15 @@ const Div = styled.div`
 const Input = styled.input`
     padding: 8px;
     width: 100%;
-    border: solid 1px #09f;
-    color: #059;
+    border: solid 1px ${({theme}) => theme.text1};
+    color: ${({theme}) => theme.placeholder};
     font-size: 1em;
     border-radius: 3px;
 `;
 const Label = styled.label`
     margin-right: 5px;
     margin-bottom: 5px;
-    color: #059;
+    color: ${({theme}) => theme.text1};
 `;
 
 export default function Field({label, type, inputRef}){

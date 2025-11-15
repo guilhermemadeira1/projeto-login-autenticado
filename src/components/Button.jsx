@@ -4,7 +4,7 @@ const Input = styled.input`
     padding: 10px;
     width: 100%;
     border-style: none;
-    background-color: #f90;
+    background-color: ${({theme}) => theme.button};
     color: #fff;
     font-weight: bold;
     font-size: 1em;

@@ -6,10 +6,10 @@ const Container = styled.div`
     justify-content: space-evenly;
     
     align-items: center;
-    background-color: ${({$background}) => $background || '#fff'}; /* desestruturação da prop background. O $ impede que a prop seja passada pro dom real no html*/
+    background-color: ${({theme}) => theme.container}; /* desestruturação da prop background. O $ impede que a prop seja passada pro dom real no html*/
     padding: 20px;
     border-radius: 3px;
-    box-shadow: 1px 1px 1px 1px #000;
+    box-shadow: 1px 1px 1px 1px ${({theme}) => theme.container};
 
     width: ${({$width}) => $width || 'min-content'};
     height: ${({$height}) => $height || 'min-content'};
@@ -18,3 +18,5 @@ const Container = styled.div`
 `;
 
 export default Container;
+
+// criar um componente unico para o formulario e o conteiner de perfil

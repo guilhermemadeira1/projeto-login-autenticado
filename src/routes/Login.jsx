@@ -1,27 +1,14 @@
 import {useRef, useState} from 'react';
-import styled from 'styled-components';
+
 import useAuth from '../hooks/useAuth';
 
 import Background from '../components/Background';
+import Form from '../components/Form';
 import NavLink from '../components/NavLink';
 import Field from '../components/Field';
 import Button from '../components/Button';
 import Heading from '../components/Heading';
 import Paragraph from '../components/Paragraph';
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    
-    align-items: center;
-    background-color: #fff;
-    padding: 20px;
-    height: 80%;
-    width: 320px;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px 1px #000;
-`;
 
 export default function Login() {
     const inputEmailRef = useRef(null);

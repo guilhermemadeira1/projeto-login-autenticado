@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 
-const style = `
-    color: #059;
-`;
-
-const H1 = styled.h1`${style}`;
-const H2 = styled.h2`${style}`;
-const H3 = styled.h3`${style}`;
-const H4 = styled.h4`${style}`;
-const H5 = styled.h5`${style}`;
-const H6 = styled.h6`${style}`;
+const H1 = styled.h1`color: ${({theme}) => theme.heading};`;
+const H2 = styled.h2`color: ${({theme}) => theme.heading};`;
+const H3 = styled.h3`color: ${({theme}) => theme.heading};`;
+const H4 = styled.h4`color: ${({theme}) => theme.heading};`;
+const H5 = styled.h5`color: ${({theme}) => theme.heading};`;
+const H6 = styled.h6`color: ${({theme}) => theme.heading};`;
 
 export default function Heading({level, children}){
     switch(level){

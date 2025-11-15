@@ -12,7 +12,7 @@ const Header = styled.div`
     justify-content: space-between;
     width: 100%;
     height: 200px;
-    background-color: #20f;
+    background-color: ${({theme}) => theme.background2};
     padding: 20px;
 `;
 const ProfileImage = styled.img`

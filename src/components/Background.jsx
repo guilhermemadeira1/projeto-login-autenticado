@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Background = styled.div`
-    background-color: #09f;
+    background-color: ${({theme}) => theme.background1};
     text-align: center;
     display: flex;
     justify-content: center;
