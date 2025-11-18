@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import inputStyle from './shared-styles/inputStyle';
 
 const Div = styled.div`
     display: flex;
@@ -8,12 +9,11 @@ const Div = styled.div`
     width: 100%;
 `;
 const Input = styled.input`
-    padding: 8px;
-    width: 100%;
-    border: solid 1px ${({theme}) => theme.text1};
-    color: ${({theme}) => theme.placeholder};
-    font-size: 1em;
-    border-radius: 3px;
+    ${inputStyle}
+`;
+const TextArea = styled.textarea`
+    ${inputStyle}
+    font-family: Arial;
 `;
 const Label = styled.label`
     margin-right: 5px;
@@ -21,19 +21,30 @@ const Label = styled.label`
     color: ${({theme}) => theme.text1};
 `;
 
-export default function Field({label, type, inputRef}){
+export default function Field({label="", type="text", value, inputRef, onChange, placeholder}){
+
+    const input = <Input 
+                    type={type}
+                    value={value}
+                    onChange={onChange}
+                    ref={inputRef}
+                    id={`i-${label.toLowerCase()}`}
+                    name={label.toLowerCase()}
+                    />;
+
+    const textArea = <TextArea 
+                        value={value}
+                        onChange={onChange}
+                        ref={inputRef}
+                        id={`i-${label.toLowerCase()}`}
+                        name={label.toLowerCase()}
+                    />;
     return (
         <Div>
             <Label htmlFor={`i-${label.toLowerCase()}`}>
                 {`${label}: `}
             </Label>
-            <Input 
-                type={type}
-                ref={inputRef}
-                id={`i-${label.toLowerCase()}`}
-                name={label.toLowerCase()}
-                required
-            />
+            {type === "textarea"? textArea : input}
         </Div>
     );
 }

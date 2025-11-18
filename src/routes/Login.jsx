@@ -50,14 +50,14 @@ export default function Login() {
 
     return(
         <Background>
-            <Form action="">
+            <Form action="" $width="60%" $maxWidth="300px" $height="80%">
                 <div>
                     <Heading level='1'>Login</Heading>
                     <Paragraph>Faça login para acessar o perfil</Paragraph>
                 </div>
                 <div style={{width: '100%'}}>
-                    <Field type="email" label="Email" inputRef={inputEmailRef}/>
-                    <Field type="password" label="Senha" inputRef={inputPasswordRef}/>
+                    <Field type="email" label="Email" inputRef={inputEmailRef} required/>
+                    <Field type="password" label="Senha" inputRef={inputPasswordRef} required/>
                 </div>
                 <Button submit onClick={(e) => handleLogin(e)}>Entrar</Button>
                 <Paragraph $color={loginStatus.success? '#083': '#f03'} $size="1em">

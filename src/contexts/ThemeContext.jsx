@@ -3,11 +3,23 @@ import {createContext, useState, useEffect} from 'react';
 export const ThemeContext = createContext();
 
 export function ThemeProvider({children}){
-    const THEMES = {LIGHT: 'light', DARK: 'dark'};
+    const THEMES = {
+        LIGHT: 'light', 
+        DARK: 'dark'
+    };
 
     const [theme, setTheme] = useState(() => {
         return localStorage.getItem("theme") || THEMES.LIGHT;
     });
+
+    const toggleTheme = () => {
+        if(theme === THEMES.LIGHT){
+            setTheme(THEMES.DARK);
+        } 
+        else{
+            setTheme(THEMES.LIGHT);
+        }
+    }
 
     useEffect(() => {
         localStorage.setItem("theme", theme);
@@ -18,33 +30,27 @@ export function ThemeProvider({children}){
             background1: '#001',
             background2: '#112',
             container: '#115',
+            inputBackground: '#112',
             placeholder: '#125',
             heading: '#f06',
             button: '#f06',
             text1: '#fff',
             text2: '#f90',
-            shadow: '#fff'
+            shadow: '#f06',
+            border: '#fff'
         },
         LIGHT:{
             background1: '#09f',
             background2: '#025',
             container: '#fff',
+            inputBackground: '#fff',
             placeholder: '#059',
             heading: '#059',
             button: '#f90',
             text1: '#059',
             text2: '#fff',
-            shadow: '#001'
-           
-        }
-    }
-
-    const toggleTheme = () => {
-        if(theme === THEMES.LIGHT){
-            setTheme(THEMES.DARK);
-        } 
-        else{
-            setTheme(THEMES.LIGHT);
+            shadow: '#115',
+            border: '#059'
         }
     }
 
