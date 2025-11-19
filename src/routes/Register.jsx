@@ -59,7 +59,7 @@ export default function Register() {
 
     return(
         <Background>
-            <Form action="" $width="60%" $maxWidth="300px" $height="80%">
+            <Form action="" $width="90%" $maxWidth="350px" $height="90%">
                 <div>
                     <Heading level='1'>Registre-se</Heading>
                     <Paragraph>Crie sua conta gratuita hoje</Paragraph>
