@@ -21,7 +21,7 @@ export default function App(){
 
   return(
       <>
-      <StyledThemeProvider theme={STYLES[theme.toUpperCase()]}>
+      <StyledThemeProvider theme={STYLES[theme.toUpperCase()]}> 
           <ThemeButton/>
           <Routes> 
               <Route path="/" element={isAuthenticaded? <Navigate to={`/usuario/${loggedInUser.id}`}/> : <Navigate to="/login"/>}/>
