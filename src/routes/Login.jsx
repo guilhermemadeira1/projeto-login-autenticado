@@ -50,7 +50,7 @@ export default function Login() {
 
     return(
         <Background>
-            <Form action="" $width="60%" $maxWidth="300px" $height="80%">
+            <Form action="" $width="90%" $maxWidth="350px" $height="90%">
                 <div>
                     <Heading level='1'>Login</Heading>
                     <Paragraph>Faça login para acessar o perfil</Paragraph>
