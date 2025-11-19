@@ -12,17 +12,17 @@ import useAuth from '../hooks/useAuth';
 
 const Header = styled.div`
     display: flex;
-    flexFlow: row nowrap;
-    justify-content: space-between;
+    flex-flow: column nowrap;
+    align-items: center;
+    height: 350px;
     width: 100%;
-    height: 200px;
     background-color: ${({theme}) => theme.background2};
-    padding: 20px;
+    padding: 30px;
+    border-radius: 3px;
 `;
 const ProfileImage = styled.img`
-    width: 100%;
-    height: 75%;
-    max-width: 130px;
+    height: 130px;
+    width: 130px;
     margin: auto;
     border-radius: 50%;
     object-fit: cover;
@@ -30,20 +30,22 @@ const ProfileImage = styled.img`
 const ImageDiv = styled.div`
     display: flex;
     justify-content: center;
-    align: itens: center;
+    align-itens: center;
     width: 50%;
 `;
 const Info = styled.div`
-    width: 60%;
-    padding: 10px;
-    text-align: left; 
+    width: 100%;
+    text-align: left;
+    text-align: center;
 `;
 const Description = styled.div`
     overflow-y: auto;
     width: 100%;
-    height: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-bottom: 20px;
     border-radius: 3px;
+    text-align: justify;
 `;
 
 export default function UserProfile(){
@@ -62,25 +64,31 @@ export default function UserProfile(){
 
     return (
         <Background>
-            <Container $width="70%"$maxWidth= "400px"$height="80%">
-                <Heading level='1'>Perfil</Heading>
+            <Container $width="90%" $maxWidth= "450px" $height="90%">
                 <Header>
                     <ImageDiv>
                         <ProfileImage src={user.image || DefaultProfileImage}/>
                     </ImageDiv>
                     <Info>
-                        <Paragraph $color='#fff' $size='1.2em'><strong> {user.name}</strong></Paragraph>
-                        <Paragraph $color='#fff' $size='1.2em'> {user.email}</Paragraph>
-                        <Button onClick={goToProfileConfig}>Editar</Button>
+                        <div>
+                            <Paragraph $color='#fff' $size='1.2em'><strong> {user.name}</strong></Paragraph>
+                            <Paragraph $color='#fff' $size='1.2em'> {user.email}</Paragraph>
+                        </div>
+                        <div style={{display: 'flex', gap: '10px'}}>
+                            <Button onClick={goToProfileConfig}
+                            >Editar</Button>
+                            <Button onClick={handleLogout}>Sair</Button>
+                        </div>
+                        
                     </Info>
                 </Header>
-                <Heading level='2'>Descrição</Heading>
+                <Heading level='1'>Descrição</Heading>
                 <Description>
                     <Paragraph size='1.2em'>
                         {user.description || 'Adicione uma descrição'}
                     </Paragraph>
                 </Description>
-                <Button onClick={handleLogout}>Sair</Button>
+
             </Container>
         </Background>
     );
