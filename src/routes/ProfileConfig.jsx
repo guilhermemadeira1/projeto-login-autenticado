@@ -9,36 +9,34 @@ import styled from "styled-components";
 import DefaultImage from "../assets/default-profile-image.png";
 
 const FieldSet1 = styled.div`
+    width: 100%;
     display: flex;
-    flexFlow: row wrap;
     gap: 10px;
-    align-self: flex-start;
 `;
 const FieldSet2 = styled.div`
+    width: 100%;
     display: flex;
-    flexFlow: column nowrap;
     gap: 10px;
     align-self: flex-start;
 `;
 const ButtonSet = styled.div`
     display: flex;
-    flexFlow: row wrap;
     gap: 10px;
     width: 100%;
+`;
+const ImagePreviewDiv = styled.div`
+    width: 100%;
+    margin-bottom: 10px;
 `;
 const ProfileImagePreview = styled.img`
     width: 100px;
     height: 100px;
-    max-width: 130px;
     border-radius: 50%;
     object-fit: cover; /*
-
         object-fit: cover; faz a imagem preencher o conteiner sem distorcer (algumas partes são cortadas)
 
         object-fit: contain; faz a imagem inteira preencher todo o container sem cortes (pode sobrar espaços em branco)
-        
     */
-    margin-bottom: 20px;
 `;
 
 export default function ProfileConfig(){
@@ -111,10 +109,12 @@ export default function ProfileConfig(){
 
     return (
         <Background>
-            <Form $width="80%" $height="80%" $maxWidth="500px">
-                <Heading level="1">Edite seu perfil</Heading>
-                <ProfileImagePreview src={state.image || DefaultImage}/>
+            <Form action="" $width="90%" $maxWidth="500px" $height="90%">
+                <ImagePreviewDiv>
+                    <ProfileImagePreview src={state.image || DefaultImage}/>
+                </ImagePreviewDiv>
                 <FieldSet1>
+                   
                     <Field
                         label="Nome"
                         value={state.name}
@@ -141,14 +141,14 @@ export default function ProfileConfig(){
                         type="password"
                         onChange={(e) => dispatch({type: ACTIONS.SET_CONFIRM_PASSWORD, payload: e.target.value})}
                     />
-               
-                    <Field
+                  
+                </FieldSet2>
+                 <Field
                         label="Foto de perfil"
                         value={state.image}
                         type="text"
                         onChange={(e) => dispatch({type: ACTIONS.SET_IMAGE, payload: e.target.value})}
                     />
-                </FieldSet2>
                 <Field
                     label="Descrição"
                     value={state.description}
