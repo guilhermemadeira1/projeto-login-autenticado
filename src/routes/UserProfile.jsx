@@ -45,7 +45,7 @@ const Description = styled.div`
     padding-right: 20px;
     margin-bottom: 20px;
     border-radius: 3px;
-    text-align: justify;
+    text-align: center;
 `;
 
 export default function UserProfile(){
